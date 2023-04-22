@@ -7,7 +7,7 @@ from django.contrib import messages
 
 # Create your views here.
 def index(request):
-	return render(request, "index.html")
+	return render(request, "login.html")
 
 def my_view(request, **kwargs):
     username = kwargs.get('username')    
