@@ -60,7 +60,14 @@ def register(request):
 		return render(request, "register.html")
 
 def send_email(request):
-    return render(request, "send.html")
+    if request.method == "POST":
+        recipient = request.POST.get('recipient')
+        content = request.POST.get('content')
+        ipfs = request.POST.get('ipfs')
+
+        
+    else:
+        return render(request, "send.html")
 
 def logout_view(request):
     logout(request)
