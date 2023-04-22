@@ -59,8 +59,8 @@ def register(request):
 	else:
 		return render(request, "register.html")
 
-# def send_email(request):
-#     return redirect(f'/')
+def send_email(request):
+    return render(request, "send.html")
 
 def logout_view(request):
     logout(request)
