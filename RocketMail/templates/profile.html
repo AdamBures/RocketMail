@@ -1,0 +1,13 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>RocketMail {{username}}</title>
+	</head>
+	<body>
+		<h3>User: {{username}}@rocketmail.com</h3>
+		<a href="{% url 'logout' %}">Log out</a>
+		<button onclick="location.href='{% url 'send' %}'">Click me</button>
+
+	</body>
+</html>
