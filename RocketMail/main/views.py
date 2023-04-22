@@ -45,6 +45,19 @@ def my_view(request, **kwargs):
     else:
         return redirect('login')
 
+def check_email_source(email_message):
+    # get the originating IP address of the email server
+    ip_address = email_message.get("Received").split(" ")[1]
+    
+    # get the domain name of the email server
+    domain_name = email.utils.parseaddr(email_message.get("From"))[1].split("@")[1]
+
+    # check if the email is coming from a Web3 email server
+    if ip_address.startswith("127.0.0.1") and domain_name.endswith(".eth"):
+        return "Web3"
+    # check if the email is coming from a Web2 email server
+    else:
+        return "Web2"
 
 @csrf_protect
 def login_view(request):
