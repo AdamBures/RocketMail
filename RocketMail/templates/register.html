@@ -1,35 +1,85 @@
+{% load static %}
 <!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Register</title>
-</head>
-<body>
-	<h2>Register</h2>
-
-	<form method="post">
-		  {% csrf_token %}
-		  <div>
-		    <div class="row">
-		      <div>
-		        <h2>Register</h2>
-		        <form>
-		          <div>
-		            <label for="username">Username:</label>
-		            <input type="text" id="username" name="username" required>
-		          </div>
-		          <div>
-		            <label for="password">Password:</label>
-		            <input type="password" id="password" name="password" required>
-		          </div>
-		         
-		          <p>Already have an account? <a href="login">Login here</a></p>
-		          <button type="submit">Register</button>
-		        </form>
-		      </div>
-		    </div>
-		  </div>
-	</div>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <title>RocketMail 🚀 - Register</title>
+        <meta content="" name="description">
+        <meta content="" name="keywords">
+        <!-- JQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <!-- Data Tables -->
+        <link href="https://cdn.datatables.net/v/dt/dt-1.13.4/datatables.min.css"
+              rel="stylesheet"/>
+        <script src="https://cdn.datatables.net/v/dt/dt-1.13.4/datatables.min.js"></script>
+        <!-- Chart.js -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <!-- Font Awesome -->
+        <link rel="stylesheet"
+              href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+        <!-- Bootstrap core CSS -->
+        <link rel="stylesheet"
+              href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <!-- Favicons -->
+        <link href="assets/img/" rel="">
+        <link href="assets/img/" rel="">
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Satisfy"
+              rel="stylesheet">
+        <!-- Vendor CSS Files -->
+        <link rel="stylesheet"
+              type="text/css"
+              href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
+        <link rel="stylesheet"
+              type="text/css"
+              href="{% static 'vendor/bootstrap-icons/bootstrap-icons.css' %}">
+        <link rel="stylesheet"
+              type="text/css"
+              href="{% static 'vendor/boxicons/css/boxicons.min.css' %}">
+        <link rel="stylesheet"
+              type="text/css"
+              href="{% static 'vendor/glightbox/css/glightbox.min.css' %}">
+        <link rel="stylesheet"
+              type="text/css"
+              href="{% static 'vendor/swiper/swiper-bundle.min.css' %}">
+        <!--Main CSS File -->
+        <link href="{% static 'css/login.css' %}"
+              rel="stylesheet"
+              media="screen"
+              type="text/css">
+    </head>
+    <body>
+        <main>
+            <section id="loginbody">
+                <div class="main">
+                    <div class="signup">
+                        <form action="" method="post">
+                            {% csrf_token %}
+                            <label for="chk" aria-hidden="true">Register</label>
+                            <input type="email" name="email" placeholder="Email" required="">
+                            <input type="password" name="password" placeholder="Password" required="">
+                            <input id="type" name="login">
+                            <button type="submit" name="loginuser" class="boot">Register</button>
+                        </br>
+                    </br>
+                    <p>
+                        Already a User?<a href="/Login"><b>  Login</b></a>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </section>
+    <!--End login form-->
+</main>
+<!-- Vendor JS Files -->
+<script src="{% static 'vendor/purecounter/purecounter.js' %}"></script>
+<script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'vendor/glightbox/js/glightbox.min.js' %}"></script>
+<script src="{% static 'vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+<script src="{% static 'vendor/swiper/swiper-bundle.min.js' %}"></script>
+<script src="{% static 'vendor/waypoints/noframework.waypoints.js' %}"></script>
+<!-- Template Main JS File -->
+<script src="{% static 'javascript/main.js' %}"></script>
 </body>
 </html>
