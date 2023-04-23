@@ -80,6 +80,9 @@ body {
   /**
   * Desktop Navigation 
   */
+  .smaller-img {
+    width: 50%;
+  }
   .navbar {
     padding: 0;
     padding-left: 10%;
@@ -96,10 +99,17 @@ body {
     background-color: lightblue;
     margin-left: 46px;
   }
+
+  #navbut a {
+    color: rgb(255, 255, 255);
+    text-align: center;
+  }
+
   #navbut:hover {
     color: #fff;
     background-color: blue;
   }
+
   .navbar ul {
     margin: 0;
     padding: 0;
@@ -337,15 +347,13 @@ body {
   }
   #hero .btn-scroll {
     transition: 0.4s;
-    color: rgba(255, 255, 255, 0.6);
+    color: #007aff;
     animation: up-down 1s ease-in-out infinite alternate-reverse both;
   }
   #hero .btn-scroll i {
     font-size: 48px;
   }
-  #hero .btn-scroll:hover {
-    color: #007aff;
-  }
+
   @media (min-width: 1024px) {
     #hero {
       background-attachment: fixed;
@@ -631,6 +639,9 @@ body {
     }
   }
   
+.row-gap {
+  margin-bottom: 20px;
+}
   
   /*--------------------------------------------------------------
   # Edit Boxes

@@ -1,272 +1,280 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta content="width=device-width, initial-scale=1.0" name="viewport">
-        <title>RocketMail 🚀</title>
-        <meta content="" name="description">
-        <meta content="" name="keywords">
-        <!-- JQuery -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <!-- Data Tables -->
-        <link href="https://cdn.datatables.net/v/dt/dt-1.13.4/datatables.min.css"
-              rel="stylesheet"/>
-        <script src="https://cdn.datatables.net/v/dt/dt-1.13.4/datatables.min.js"></script>
-        <!-- Chart.js -->
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-        <!-- Font Awesome -->
-        <link rel="stylesheet"
-              href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
-        <!-- Bootstrap core CSS -->
-        <link rel="stylesheet"
-              href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-        <!-- Favicons -->
-        <link href="assets/img/" rel="">
-        <link href="assets/img/" rel="">
-        <!-- Google Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Satisfy"
-              rel="stylesheet">
-        <!-- Vendor CSS Files -->
-        <link rel="stylesheet"
-              type="text/css"
-              href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
-        <link rel="stylesheet"
-              type="text/css"
-              href="{% static 'vendor/bootstrap-icons/bootstrap-icons.css' %}">
-        <link rel="stylesheet"
-              type="text/css"
-              href="{% static 'vendor/boxicons/css/boxicons.min.css' %}">
-        <link rel="stylesheet"
-              type="text/css"
-              href="{% static 'vendor/glightbox/css/glightbox.min.css' %}">
-        <link rel="stylesheet"
-              type="text/css"
-              href="{% static 'vendor/swiper/swiper-bundle.min.css' %}">
-        <!--Main CSS File -->
-        <link href="{% static 'css/style.css' %}"
-              rel="stylesheet"
-              media="screen"
-              type="text/css">
-    </head>
-    <body>
-        <!-- ======= Header ======= -->
-        <header id="header"
-                class="fixed-top d-flex justify-content-center align-items-center header-transparent">
-            <a href="index.html" class="logo">
-                <img src="{% static '/images/logo-no-background' %}"
-                     alt=""
-                     class="img-fluid">
-            </a>
-            <nav id="navbar" class="navbar">
-                {% comment %} <a href="index.html" class="navbar-logo">
-                    <img src="{% static '/images/logo-no-background.png' %}"
-                         alt=""
-                         class="img-fluid">
-                </a> {% endcomment %}
-                <ul>
-                    <li>
-                        <a class="nav-link scrollto active" href="#hero">Home</a>
-                    </li>
-                    <li>
-                        <a class="nav-link scrollto" href="#about-boxes">About</a>
-                    </li>
-                    <li>
-                        <a class="nav-link scrollto" href="#products">Products</a>
-                    </li>
-                    <li>
-                        <a class="nav-link scrollto" href="#edit-boxes">Statistics</a>
-                    </li>
-                    <li>
-                        <a class="nav-link scrollto" href="#contact">Contact</a>
-                    </li>
-                </ul>
-                <button id="navbut"
-                        type="submit"
-                        class="button button-a button-big button-rouded">LOGIN</button>
-                <button id="navbut"
-                        type="submit"
-                        class="button button-a button-big button-rouded">SIGN UP</button>
-                <i class="bi bi-list mobile-nav-toggle"></i>
-            </nav>
-            <!-- .navbar -->
-        </header>
-        <!-- End Header -->
-        <!-- ======= Hero Section ======= -->
-        <section id="hero">
-            <div class="hero-container">
-                <div class="container" data-aos="fade-up">
-                    <div class="row">
-                        <div class="col-lg-6 video-box align-self-baseline"
-                             data-aos="zoom-in"
-                             data-aos-delay="100">
-                            <img src="{% static '/images/logo-no-background.png' %}"
-                                 class="img-fluid"
-                                 alt="">
-                        </div>
-                        <div class="col-lg-6 pt-3 pt-lg-0 content">
-                            <h3>Who we are</h3>
-                            <p>
-                                RocketMail is a technology company that is revolutionizing the email industry with its Web3 email service. Our goal is to create a decentralized email service that provides users with greater control and ownership over their emails, while also leveraging the security and transparency of blockchain technology. We believe that email is a critical communication tool that should be secure, private, and accessible to everyone. With RocketMail, we are making this vision a reality by offering a simple, user-friendly email service that is powered by the latest Web3 technologies. Join us on our mission to revolutionize the email industry and take control of your email experience.
-                            </p>
-                            <button id="aboutbut"
-                                    type="submit"
-                                    class="button button-a button-big button-rouded">SEND MAIL</button>
-                        </div>
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>RocketMail 🚀</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+    <!-- JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Data Tables -->
+    <link href="https://cdn.datatables.net/v/dt/dt-1.13.4/datatables.min.css" rel="stylesheet" />
+    <script src="https://cdn.datatables.net/v/dt/dt-1.13.4/datatables.min.js"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Favicons -->
+    <link href="assets/img/" rel="">
+    <link href="assets/img/" rel="">
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Satisfy"
+        rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap-icons/bootstrap-icons.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/boxicons/css/boxicons.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/glightbox/css/glightbox.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/swiper/swiper-bundle.min.css' %}">
+    <!--Main CSS File -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" media="screen" type="text/css">
+</head>
+
+<body>
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top d-flex justify-content-center align-items-center header-transparent">
+        <a href="index.html" class="logo">
+            <img src="{% static '/images/logo-no-background' %}" alt="" class="img-fluid">
+        </a>
+        <nav id="navbar" class="navbar">
+            {% comment %} <a href="index.html" class="navbar-logo">
+                <img src="{% static '/images/logo-no-background.png' %}" alt="" class="img-fluid">
+            </a> {% endcomment %}
+            <ul>
+                <li>
+                    <a class="nav-link scrollto active" href="#hero">Home</a>
+                </li>
+                <li>
+                    <a class="nav-link scrollto" href="#about-boxes">About</a>
+                </li>
+                <li>
+                    <a class="nav-link scrollto" href="#edit-boxes">Technologies</a>
+                </li>
+                <li>
+                    <a class="nav-link scrollto" href="#products">Products</a>
+                </li>
+                <li>
+                    <a class="nav-link scrollto" href="#contact">Contact</a>
+                </li>
+            </ul>
+            <button id="navbut" type="submit" class="button button-a button-big button-rouded" onclick="location.href='{% url 'login' %}'">LOGIN</button>
+            <button id="navbut" type="submit" class="button button-a button-big button-rouded" onclick="location.href='{% url 'register' %}'">SIGN UP</button>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav>
+        <!-- .navbar -->
+    </header>
+    <!-- End Header -->
+    <!-- ======= Logo Section ======= -->
+      <section id="hero">
+        <div class="hero-container">
+          
+          <img src="{% static '/images/logo-no-background.png' %}">
+          <a href="#about-boxes" class="btn-scroll scrollto" title="Scroll Down"><i class="bx bx-chevron-down"></i></a>
+        </div>
+      </section>
+    <!-- End Hero -->
+
+    <!-- ======= About Section ======= -->
+    <section id="about-boxes" class="about-boxes">
+        <div class="hero-container">
+            <div class="container" data-aos="fade-up">
+                <div class="row">
+                    <div class="col-lg-6 video-box align-self-baseline" data-aos="zoom-in" data-aos-delay="100">
+                        <img src="{% static '/images/logo-no-background.png' %}" class="img-fluid" alt="">
+                    </div>
+                    <div class="col-lg-6 pt-3 pt-lg-0 content">
+                        <h3>Who we are</h3>
+                        <p>
+                            RocketMail is a technology company that is revolutionizing the email industry with its Web3
+                            email service. Our goal is to create a decentralized email service that provides users with
+                            greater control and ownership over their emails, while also leveraging the security and
+                            transparency of blockchain technology. We believe that email is a critical communication
+                            tool that should be secure, private, and accessible to everyone. With RocketMail, we are
+                            making this vision a reality by offering a simple, user-friendly email service that is
+                            powered by the latest Web3 technologies. Join us on our mission to revolutionize the email
+                            industry and take control of your email experience.
+                        </p>
+                        <button id="aboutbut" type="submit" class="button button-a button-big button-rouded" onclick="location.href='{% url 'send' %}'">SEND MAIL</button>
                     </div>
                 </div>
-        </section>
-            <!-- End Hero -->
-            <main id="main">
-                <!-- ======= products Section ======= -->
-                <section id="products" class="products-boxes">
-                    <div class="container">
-                        <div class="section-title">
-                            <h1 style="text-align: center;">More content</h1>
+            </div>
+    </section>
+    <!-- End Hero -->
+    <main id="main">
+        <!-- ======= products Section ======= -->
+        <section id="products" class="products-boxes">
+            <div class="container">
+                <div class="section-title">
+                    <h1 style="text-align: center;">Products</h1>
+                </div>
+                <p>RocketMail offers you a two types of service.</p>
+                <center>
+                    <div class="col-lg-6 col-md-6 d-flex align-items-stretch">
+                        <div class="row gutter justify-content-center">
+                          <div class="col-lg-6 col-md-6 d-flex align-items-stretch">
+                            <div class="card">
+                              <div id="card-title">
+                                <h2 style="text-align: center;">Free</h2>
+                              </div>
+                              <img src="{% static '/images/free.png' %}" class="card-img-top" alt="...">
+                              <div class="card-body">
+                                <p class="card-text">Free members will receive:</p>
+                                <ul>
+                                  <li class="card-text">Email address</li>
+                                  <li class="card-text">Sending emails through Web2</li>
+                                  <li class="card-text">Data saved into our database</li>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-lg-6 col-md-6 d-flex align-items-stretch">
+                            <div class="card">
+                              <div id="card-title">
+                                <h2 style="text-align: center;">Premium</h2>
+                              </div>
+                              <img src="{% static '/images/premium.png' %}" class="card-img-top" alt="...">
+                              <div class="card-body">
+                                <p class="card-text">Premium members will receive:</p>
+                                <ul>
+                                  <li class="card-text">Email address</li>
+                                  <li class="card-text">Sending emails through Web2 and Web3</li>
+                                  <li class="card-text">Data saved into our database</li>
+                                  <li class="card-text">Possibility to contribute in the development</li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
                         </div>
-                        <h3>More content goes here</h3>
-                        <p>
-                            RocketMail is a technology company that is revolutionizing the email industry with its Web3 email service. Our goal is to create a decentralized email service that provides users with greater control and ownership over their emails, while also leveraging the security and transparency of blockchain technology. We believe that email is a critical communication tool that should be secure, private, and accessible to everyone. With RocketMail, we are making this vision a reality by offering a simple, user-friendly email service that is powered by the latest Web3 technologies. Join us on our mission to revolutionize the email industry and take control of your email experience.
-                        </p>
-                        
+
                     </div>
-                </section>
-                <!--end products Section -->
-                <!-- ======= Contact Me Section ======= -->
-                <section id="contact" class="contact">
-                    <div class="container">
-                        <div class="section-title">
-                            <h2>Contact us</h2>
-                            <p>Get in touch with us</p>
-                        </div>
+                </center>
+            </div>
+        </section>
+        <!--end products Section -->
+        <!-- ======= Contact Me Section ======= -->
+        <section id="contact" class="contact">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Contact us</h2>
+                    <p>Get in touch with us</p>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
                         <div class="row">
-                            <div class="col-lg-6">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="info-box">
-                                            <i class="bx bx-share-alt"></i>
-                                            <h3>Social Profiles</h3>
-                                            <div class="social-links">
-                                                <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
-                                                <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-                                                <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-                                                <a href="#" class="google-plus"><i class="bi bi-skype"></i></a>
-                                                <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="info-box mt-4">
-                                            <i class="bx bx-envelope"></i>
-                                            <h3>Email Me</h3>
-                                            <p>contact@yahoo.com</p>
-                                            <p>contacts@gmail.com</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="info-box mt-4">
-                                            <i class="bx bx-phone-call"></i>
-                                            <h3>Call Us</h3>
-                                            <p>
-                                                +345 810-237-7776
-                                            </p>
-                                            <p>
-                                                +236 915-349-1680
-                                            </p>
-                                        </div>
+                            <div class="col-md-12">
+                                <div class="info-box">
+                                    <i class="bx bx-share-alt"></i>
+                                    <h3>Social Profiles</h3>
+                                    <div class="social-links">
+                                        <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+                                        <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+                                        <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+                                        <a href="#" class="google-plus"><i class="bi bi-skype"></i></a>
+                                        <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-6">
-                                <form action="" method="POST" />
-                                <div class="row">
-                                    <div class="col-md-12 mb-3">
-                                        <div class="form-group">
-                                            <input type="text"
-                                                   name="Full&nbsp;Name"
-                                                   class="form-control"
-                                                   id="name"
-                                                   placeholder="Full Name"
-                                                   required>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12 mb-3">
-                                        <div class="form-group">
-                                            <input type="email"
-                                                   class="form-control"
-                                                   name="Email"
-                                                   id="email"
-                                                   placeholder="Your Email"
-                                                   required>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12 mb-3">
-                                        <div class="form-group">
-                                            <input type="tel"
-                                                   class="form-control"
-                                                   name="Phone&nbsp;Nunber"
-                                                   id="phone"
-                                                   placeholder="Phone No"
-                                                   required>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <textarea class="form-control"
-                                                      name="Message"
-                                                      rows="5"
-                                                      placeholder="Message"
-                                                      required></textarea>
-                                        </div>
-                                    </div>
+                            <div class="col-md-6">
+                                <div class="info-box mt-4">
+                                    <i class="bx bx-envelope"></i>
+                                    <h3>Email Me</h3>
+                                    <p>contact@yahoo.com</p>
+                                    <p>contacts@gmail.com</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="info-box mt-4">
+                                    <i class="bx bx-phone-call"></i>
+                                    <h3>Call Us</h3>
+                                    <p>
+                                        +345 810-237-7776
+                                    </p>
+                                    <p>
+                                        +236 915-349-1680
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <form action="" method="POST" />
+                        <div class="row">
+                            <div class="col-md-12 mb-3">
+                                <div class="form-group">
+                                    <input type="text" name="Full&nbsp;Name" class="form-control" id="name"
+                                        placeholder="Full Name" required>
+                                </div>
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <div class="form-group">
+                                    <input type="email" class="form-control" name="Email" id="email"
+                                        placeholder="Your Email" required>
+                                </div>
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <div class="form-group">
+                                    <input type="tel" class="form-control" name="Phone&nbsp;Nunber" id="phone"
+                                        placeholder="Phone No" required>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <textarea class="form-control" name="Message" rows="5" placeholder="Message"
+                                        required></textarea>
+                                </div>
+                            </div>
+                            </br>
+                            <div class="col-md-12 text-center">
                                 </br>
-                                <div class="col-md-12 text-center">
-                                </br>
-                                <button id="submitbut"
-                                        type="submit"
-                                        class="button button-a button-big button-rouded">
+                                <button id="submitbut" type="submit" class="button button-a button-big button-rouded">
                                     Send
                                     Message
                                 </button>
                             </div>
                         </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
+        </section>
+        <!-- End Contact Me Section -->
+    </main>
+    <!-- End #main -->
+    <!-- ======= Footer ======= -->
+    <footer id="footer">
+        <div class="container">
+            <h3>
+                "RocketMail is a technology company that is revolutionizing the email industry.
+            </h3>
+            <div class="social-links">
+                <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+                <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+                <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+                <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+                <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+            </div>
+            <div class="copyright">
+                &copy; Copyright 2023 <strong><span>RocketMail 🚀</span></strong>. All Rights Reserved
+            </div>
         </div>
-    </section>
-    <!-- End Contact Me Section -->
-</main>
-<!-- End #main -->
-<!-- ======= Footer ======= -->
-<footer id="footer">
-    <div class="container">
-        <h3>
-            "RocketMail is a technology company that is revolutionizing the email industry.
-        </h3>
-        <div class="social-links">
-            <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-            <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-            <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-            <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-            <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-        </div>
-        <div class="copyright">
-            &copy; Copyright 2023 <strong><span>RocketMail 🚀</span></strong>. All Rights Reserved
-        </div>
-    </div>
-</footer>
-<!-- End Footer -->
-<a href="#"
-   class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-<!-- Vendor JS Files -->
-<script src="{% static 'vendor/purecounter/purecounter.js' %}"></script>
-<script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-<script src="{% static 'vendor/glightbox/js/glightbox.min.js' %}"></script>
-<script src="{% static 'vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
-<script src="{% static 'vendor/swiper/swiper-bundle.min.js' %}"></script>
-<script src="{% static 'vendor/waypoints/noframework.waypoints.js' %}"></script>
-<!-- Template Main JS File -->
-<script src="{% static 'javascript/main.js' %}"></script>
+    </footer>
+    <!-- End Footer -->
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+            class="bi bi-arrow-up-short"></i></a>
+    <!-- Vendor JS Files -->
+    <script src="{% static 'vendor/purecounter/purecounter.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'vendor/glightbox/js/glightbox.min.js' %}"></script>
+    <script src="{% static 'vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+    <script src="{% static 'vendor/swiper/swiper-bundle.min.js' %}"></script>
+    <script src="{% static 'vendor/waypoints/noframework.waypoints.js' %}"></script>
+    <!-- Template Main JS File -->
+    <script src="{% static 'javascript/main.js' %}"></script>
 </body>
+
 </html>

@@ -57,14 +57,21 @@
                         <form action="" method="post">
                             {% csrf_token %}
                             <label for="chk" aria-hidden="true">Register</label>
-                            <input type="email" name="email" placeholder="Email" required="">
+                            <input type="username" name="username" placeholder="Username" required="">
                             <input type="password" name="password" placeholder="Password" required="">
                             <input id="type" name="login">
                             <button type="submit" name="loginuser" class="boot">Register</button>
+                            {% if messages %}
+                                <ul class="messages">
+                                    {% for message in messages %}
+                                        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
                         </br>
                     </br>
                     <p>
-                        Already a User?<a href="/Login"><b>  Login</b></a>
+                        Already a User? <a href="login"><b>Login</b></a>
                     </p>
                 </form>
             </div>

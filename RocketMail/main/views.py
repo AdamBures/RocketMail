@@ -5,9 +5,10 @@ from django.views.decorators.csrf import csrf_protect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 
+
 # Create your views here.
 def index(request):
-	return render(request, "login.html")
+    return render(request, "index.html")
 
 def my_view(request, **kwargs):
     username = kwargs.get('username')    
@@ -48,26 +49,32 @@ def login_view(request):
             return redirect(f'profile/{username}')
 
 def register(request):
-	if request.method == "POST":
-		username = request.POST.get('username')
-		password = request.POST.get('password')
+    if request.method == "POST":
+        username = request.POST.get('username')
+        password = request.POST.get('password')
 
-		user = User.objects.create(username=username, password=password)
-		user.save()
-
-		return redirect('login')
-	else:
-		return render(request, "register.html")
+        if User.objects.filter(username=username).exists():
+            messages.error(request, 'Username is already taken.')
+            return render(request, 'register.html', {'messages': messages.get_messages(request)})
+        else:    
+            user = User.objects.create(username=username, password=password)
+            user.save()
+            return redirect('login')
+    else:
+        return render(request, "register.html")
 
 def send_email(request):
-    if request.method == "POST":
-        recipient = request.POST.get('recipient')
-        content = request.POST.get('content')
-        ipfs = request.POST.get('ipfs')
+    if request.session.get('LOGGED', True):
+        if request.method == "POST":
+            recipient = request.POST.get('recipient')
+            content = request.POST.get('content')
+            ipfs = request.POST.get('ipfs')
 
-        
+            
+        else:
+            return render(request, "send.html")
     else:
-        return render(request, "send.html")
+        return redirect('login')
 
 def logout_view(request):
     logout(request)
