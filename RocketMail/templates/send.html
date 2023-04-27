@@ -48,6 +48,10 @@
               rel="stylesheet"
               media="screen"
               type="text/css">
+        <link href="{% static 'css/login.css' %}"
+              rel="stylesheet"
+              media="screen"
+              type="text/css">
     </head>
     <body>
         <!-- ======= Header ======= -->
@@ -69,45 +73,37 @@
                         class="button button-a button-big button-rouded">EMAIL LIST</button>
                 <button id="navbut"
                         type="submit"
-                        class="button button-a button-big button-rouded" onclick="location.href='{% url 'logout' %}'">LOGOUT</button>
+                        class="button button-a button-big button-rouded"
+                        onclick="location.href='{% url 'logout' %}'">
+                    LOGOUT
+                </button>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav>
             <!-- .navbar -->
         </header>
         <!-- End Header -->
         <main id="main">
-            <!-- ======= Contact Me Section ======= -->
-            <section id="contact" class="contact">
-                <div class="container">
-                    <div class="section-title">
-                        <h2>SEND MAIL</h2>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-9">
-                            <form action="" method="POST" />
-                            <div class="row">
-                                <div class="col-md-12 mb-3">
-                                    <div class="form-group">
-                                        <label for="recipient">Recipient:</label>
-                                        <input type="text" id="recipient" name="recipient" required>
-                                    </div>
-                                </div>
-                                <div class="col-md-12 mb-3">
-                                    <div class="form-group">
-                                        <label for="content">Content:</label>
-                                        <textarea type="text" id="content" name="content" required></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-md-12 mb-3">
-                                    <div class="form-group">
-                                        <label for="content">IPFS:</label>
-                                        <input type="file" id="ipfs" name="ipfs" accept=".rtf, .pdf, .txt" required>
-                                    </div>
-                                </div>
-                                
-                            </br>
+            <section style="background-color: lightblue;" id="loginbody">
+                <div class="main">
+                    <div class="signup">
+                        <form action="" method="post">
+                            {% csrf_token %}
+                            <label for="chk" aria-hidden="true">SEND MAIL</label>
+                            <input type="text"
+                                   id="recipient"
+                                   name="recipient"
+                                   placeholder="Recipiant Address"
+                                   required>
+                            <input type="text"
+                                   id="content"
+                                   class="textarea"
+                                   name="content"
+                                   style="height:200px;font-size:14pt; max-lenght: 50px;"
+                                   placeholder="Message"
+                                   required>
+                            <input type="file" id="ipfs" name="ipfs" accept=".rtf, .pdf, .txt" required>
                             <div class="col-md-12 text-center">
-                            </br>
+                            
                             <button id="submitbut"
                                     type="submit"
                                     class="button button-a button-big button-rouded">
@@ -115,23 +111,21 @@
                                 Message
                             </button>
                         </div>
-                    </div>
-                </form>
+                        
+                    </form>
+                </div>
             </div>
-        </div>
-    </div>
-</section>
-<!-- End Contact Me Section -->
-</main>
-<!-- End #main -->
-<!-- Vendor JS Files -->
-<script src="{% static 'vendor/purecounter/purecounter.js' %}"></script>
-<script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-<script src="{% static 'vendor/glightbox/js/glightbox.min.js' %}"></script>
-<script src="{% static 'vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
-<script src="{% static 'vendor/swiper/swiper-bundle.min.js' %}"></script>
-<script src="{% static 'vendor/waypoints/noframework.waypoints.js' %}"></script>
-<!-- Template Main JS File -->
-<script src="{% static 'javascript/main.js' %}"></script>
+        </section>
+    </main>
+    <!-- End #main -->
+    <!-- Vendor JS Files -->
+    <script src="{% static 'vendor/purecounter/purecounter.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'vendor/glightbox/js/glightbox.min.js' %}"></script>
+    <script src="{% static 'vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+    <script src="{% static 'vendor/swiper/swiper-bundle.min.js' %}"></script>
+    <script src="{% static 'vendor/waypoints/noframework.waypoints.js' %}"></script>
+    <!-- Template Main JS File -->
+    <script src="{% static 'javascript/main.js' %}"></script>
 </body>
 </html>
