@@ -85,7 +85,15 @@
                     <div class="row">
                         <div class="col-lg-9">
                             <form action="" method="POST" />
+                            {% csrf_token %}
                             <div class="row">
+                                <div class="col-md-12 mb-3">
+                                    <p>How do you want to send your email ?</p>
+                                    <input type="radio" id="web2" name="web" value="Web2" checked>
+                                    <label for="web2">Web2</label><br>
+                                    <input type="radio" id="web3" name="web" value="Web3">
+                                    <label for="web3">Web3</label><br>
+                                </div>
                                 <div class="col-md-12 mb-3">
                                     <div class="form-group">
                                         <label for="recipient">Recipient:</label>
@@ -94,17 +102,16 @@
                                 </div>
                                 <div class="col-md-12 mb-3">
                                     <div class="form-group">
-                                        <label for="content">Content:</label>
-                                        <textarea type="text" id="content" name="content" required></textarea>
+                                        <label for="subject">Subject:</label>
+                                        <input type="text" id="subject" name="subject" required>
                                     </div>
                                 </div>
                                 <div class="col-md-12 mb-3">
                                     <div class="form-group">
-                                        <label for="content">IPFS:</label>
-                                        <input type="file" id="ipfs" name="ipfs" accept=".rtf, .pdf, .txt" required>
+                                        <label for="content">Content:</label>
+                                        <textarea type="text" id="content" name="content" required></textarea>
                                     </div>
                                 </div>
-                                
                             </br>
                             <div class="col-md-12 text-center">
                             </br>
