@@ -21,6 +21,22 @@ body {
     font-family: "Raleway", sans-serif;
   }
   
+
+  /*--------------------------------------------------------------
+  # Email list
+  --------------------------------------------------------------*/
+  #list {
+    background-color: lightblue;
+  }
+  table {
+    background-color: rgb(102, 221, 211);
+  }
+  tr {
+    border-radius: 5px;
+  }
+  tr:hover {
+    background-color: rgb(106, 106, 248);
+  }
   /*--------------------------------------------------------------
   # Back to top button
   --------------------------------------------------------------*/
@@ -203,7 +219,7 @@ body {
   * Mobile Navigation 
   */
   .mobile-nav-toggle {
-    color: #fff;
+    color: blue;
     font-size: 28px;
     cursor: pointer;
     display: none;
