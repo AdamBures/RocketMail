@@ -30,7 +30,10 @@ def index(request):
 def my_view(request, **kwargs):
     username = kwargs.get('username')    
     if request.session.get('LOGGED', True):
-        return render(request, 'profile.html', {'username': username})
+        if request.method == "POST":
+            pass
+        else:
+            return render(request, 'profile.html', {'username': username})
     else:
         return redirect('login')
 
@@ -122,12 +125,14 @@ def register(request):
     if request.method == "POST":
         username = request.POST.get('username')
         password = request.POST.get('password')
+        first_name = request.POST.get('first_name')
+        last_name = request.POST.get('last_name')
 
         if User.objects.filter(username=username).exists():
             messages.error(request, 'Username is already taken.')
             return render(request, 'register.html', {'messages': messages.get_messages(request)})
         else:    
-            user = User.objects.create(username=username, password=password)
+            user = User.objects.create(username=username, password=password, first_name=first_name, last_name=last_name)
             user.save()
             return redirect('login')
     else:
@@ -184,6 +189,9 @@ def send_mail_gmail(recipient, rocketmail_subject, rocketmail_message):
         smtp.login(sender, password)
         smtp.sendmail(sender, recipient, em.as_string())
 
+
+def get_emails(request):
+    return render(request, "email-list.html")
 
 def logout_view(request):
     logout(request)

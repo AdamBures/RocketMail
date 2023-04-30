@@ -82,9 +82,45 @@
                     <div class="section-title">
                         <h2>MAIL List</h2>
                     </div>
-                    <h3>User: {{ username }}@rocketmail.com</h3>
+                    <h3>User: {{ username }}@rocmail.com</h3>
                     <a href="{% url 'logout' %}">Log out</a>
                     <button id="aboutbut" onclick="location.href='{% url 'send' %}'">Click me</button>
+
+                    {% if gmail_username == "" %}
+                        <p>If you want to send emails with your gmail, login here</p>
+                    {% endif %}
+
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                        <label>First Name: {{ fist_name }}</label>
+                        <input type="fist_name" name="fist_name">
+                        
+                        <label>Second Name: {{ second_name }}</label>
+                        <input type="second_name" name="second_name">
+
+                        <label>Username: {{ username }}</label>
+                        <input type="username" name="username">
+
+                        <label>Password:</label>
+                        <input type="password" name="password">
+
+                        <label>Gmail username: {{ gmail_username }}</label>
+                        <input type="gmail_username" name="gmail_username">
+
+                        <label>Gmail password: {{ gmail_password }}</label>
+                        <input type="password" name="gmail_password">
+
+                        {% if messages %}
+                            <ul class="messages">
+                                {% for message in messages %}
+                                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+
+                        <button>Change</button>
+                    </form>
+
                 </form>
             </div>
         </div>

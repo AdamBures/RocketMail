@@ -6,6 +6,12 @@ class User(models.Model):
 	username = models.CharField(max_length=30)
 	password = models.CharField(max_length=15, validators=[MinLengthValidator(8), MaxLengthValidator(15)])
 	created_at = models.DateTimeField(auto_now_add=True)
+	first_name = models.CharField(max_length=100)
+	last_name = models.CharField(max_length=100)
+	
+	gmail_username = models.CharField(max_length=100, null=True, blank=True)
+	gmail_passwords = models.CharField(max_length=100, null=True, blank=True)
+
 
 class Email(models.Model):
 	sender = models.CharField(max_length=30)
