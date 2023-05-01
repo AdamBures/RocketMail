@@ -28,12 +28,44 @@ def index(request):
     return render(request, "index.html")
 
 def my_view(request, **kwargs):
-    username = kwargs.get('username')    
+    username = kwargs.get('username')
+
     if request.session.get('LOGGED', True):
+
+        user = User.objects.filter(username=username)[0]
+        password = user.password
+        first_name = user.first_name
+        last_name = user.last_name
+        gmail_username = user.gmail_username
+        gmail_password = user.gmail_password
+
+        message = ""
         if request.method == "POST":
-            pass
-        else:
-            return render(request, 'profile.html', {'username': username})
+            username = request.POST.get('username')
+            password = request.POST.get('password')
+            first_name = request.POST.get('first_name')
+            last_name = request.POST.get('last_name')
+            gmail_username = request.POST.get('gmail_username')
+            gmail_password = request.POST.get('gmail_password')
+
+            user.username = username
+            user.password = password
+            user.first_name = first_name
+            user.last_name = last_name
+
+            context = ssl.create_default_context()
+            smtp = smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context)
+            try:
+                smtp.login(gmail_username, gmail_password)
+                user.gmail_username = gmail_username
+                user.gmail_password = gmail_password
+            except:
+                message = 'Invalid gmail username or password. If your credentials are correct please add an app to your Google account.'
+
+            user.save()
+
+        return render(request, 'profile.html', {'username': username, 'password': password, 'first_name': first_name, 'last_name': last_name, 'gmail_username': gmail_username, 'gmail_password': gmail_password, 'messages': message})
+
     else:
         return redirect('login')
 
@@ -134,13 +166,14 @@ def register(request):
         else:    
             user = User.objects.create(username=username, password=password, first_name=first_name, last_name=last_name)
             user.save()
-            return redirect('login')
+            return render(request, 'login.html')
     else:
         return render(request, "register.html")
 
 def send_email(request):
     if request.session.get('LOGGED', True):
         if request.method == "POST":
+            username = request.session["username"]
             recipient = request.POST.get('recipient')
 
             subject = request.POST.get('subject')
@@ -150,7 +183,7 @@ def send_email(request):
             web = request.POST.get('web')
 
             if web == "Web2":
-                send_mail_gmail(recipient, subject, content)
+                send_mail_gmail(username, recipient, subject, content)
                 return render(request, 'send.html')
             else:
                 ipfs = send_to_IPFS(subject, content)
@@ -163,7 +196,7 @@ def send_email(request):
             rocketmail_subject = 'You have a new message on IPFS.'
             rocketmail_message = f'Find it at: {cid}. Please use my public key and the receiver code {receiver.IV} to unlock it.'
             
-            send_mail_gmail(recipient, rocketmail_subject, rocketmail_message)
+            send_mail_gmail(username, recipient, rocketmail_subject, rocketmail_message)
             
             return render(request, 'send.html')
             
@@ -173,9 +206,14 @@ def send_email(request):
         return redirect('login')
 
 
-def send_mail_gmail(recipient, rocketmail_subject, rocketmail_message):
-    sender = "testrocketmail@gmail.com"
-    password = os.getenv("password")
+def send_mail_gmail(username, recipient, rocketmail_subject, rocketmail_message):
+    user = User.objects.filter(username=username)[0]
+    if user.gmail_username != "This user has not set this part.":
+        sender = user.gmail_username
+        password = user.gmail_password
+    else:
+        sender = "testrocketmail@gmail.com"
+        password = os.getenv("password")
 
     em = EmailMessage()
     em["From"] = sender

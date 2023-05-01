@@ -86,36 +86,32 @@
                     <a href="{% url 'logout' %}">Log out</a>
                     <button id="aboutbut" onclick="location.href='{% url 'send' %}'">Click me</button>
 
-                    {% if gmail_username == "" %}
-                        <p>If you want to send emails with your gmail, login here</p>
+                    {% if gmail_username == "This user has not set this part." %}
+                        <p id="error">If you want to send emails with your gmail, login here</p>
                     {% endif %}
 
                     <form action="" method="POST">
                         {% csrf_token %}
-                        <label>First Name: {{ fist_name }}</label>
-                        <input type="fist_name" name="fist_name">
+                        <label>First Name: </label>
+                        <input type="fist_name" name="first_name" value="{{ first_name }}">
                         
-                        <label>Second Name: {{ second_name }}</label>
-                        <input type="second_name" name="second_name">
+                        <label>Second Name: </label>
+                        <input type="second_name" name="last_name" value="{{ last_name }}">
 
-                        <label>Username: {{ username }}</label>
-                        <input type="username" name="username">
+                        <label>Username: </label>
+                        <input type="username" name="username" value="{{ username }}">
 
                         <label>Password:</label>
-                        <input type="password" name="password">
+                        <input type="password" name="password" value="{{ password }}">
 
-                        <label>Gmail username: {{ gmail_username }}</label>
-                        <input type="gmail_username" name="gmail_username">
+                        <label>Gmail username: </label>
+                        <input type="gmail_username" name="gmail_username" value="{{ gmail_username }}">
 
-                        <label>Gmail password: {{ gmail_password }}</label>
-                        <input type="password" name="gmail_password">
+                        <label>Gmail password: </label>
+                        <input type="password" name="gmail_password" value="{{ gmail_password }}">
 
-                        {% if messages %}
-                            <ul class="messages">
-                                {% for message in messages %}
-                                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-                                {% endfor %}
-                            </ul>
+                        {% if messages != '' %}
+                            <p>{{ messages }}</p>
                         {% endif %}
 
                         <button>Change</button>
