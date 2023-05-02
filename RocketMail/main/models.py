@@ -19,7 +19,6 @@ class User(models.Model):
 
 
 class Email(models.Model):
-	sender = models.CharField(max_length=30)
-	recipient = models.CharField(max_length=30)
-	content = models.CharField(max_length=30)
-	IPFS = models.FileField(upload_to="IPFS/", validators=[FileExtensionValidator(allowed_extensions=["pdf", "rtf", "txt"])])
+	cid = models.CharField(max_length=100, default="")
+	message = models.CharField(max_length=10000, default="")
+	public_key = models.CharField(max_length=100, default="")

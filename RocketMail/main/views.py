@@ -5,7 +5,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.core.mail import send_mail
 
-from .models import User
+from .models import User, Email
 from .rocketEncryption import DiffieHellman
 
 import os
@@ -17,7 +17,7 @@ from email.mime.multipart import MIMEMultipart
 import ssl
 import smtplib
 import requests
-
+import binascii
 
 from dotenv import load_dotenv
 
@@ -26,6 +26,14 @@ load_dotenv()
 # Create your views here.
 def index(request):
     return render(request, "index.html")
+
+def get_from_IPFS(cid):
+    email = Email.objects.filter(cid=cid)[0]
+
+    content = email.message
+
+
+    return content
 
 def my_view(request, **kwargs):
     username = kwargs.get('username')
@@ -104,6 +112,7 @@ def send_to_IPFS(email_subject, email_content):
     sender = DiffieHellman()
     receiver = DiffieHellman()
 
+
     # Encrypt message and generate decrypted message
     encrypted_message = receiver.encrypt(sender.public_key, email_subject + "\n" + email_content)
     decrypted_message = sender.decrypt(receiver.public_key, encrypted_message, receiver.IV)
@@ -120,6 +129,8 @@ def send_to_IPFS(email_subject, email_content):
     response = requests.post(ipfs_url, files=data, headers=headers)
     cid = response.json()['IpfsHash']
     
+    email = Email.objects.create(cid=cid, message=binascii.hexlify(decrypted_message).decode(), public_key=receiver.IV)
+
     return cid, receiver
 
 @csrf_protect
