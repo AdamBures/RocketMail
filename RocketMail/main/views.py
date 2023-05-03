@@ -27,13 +27,27 @@ load_dotenv()
 def index(request):
     return render(request, "index.html")
 
-def get_from_IPFS(cid):
-    email = Email.objects.filter(cid=cid)[0]
 
-    content = email.message
+def get_from_IPFS(cid, public_key):
+    email = Email.objects.get(cid=cid, public_key=public_key)
+
+    if email:
+        return email.message
+    else:
+        return "Wrong CID or key"
 
 
-    return content
+def get_emails(request):
+    if request.method == "POST":
+        cid = request.POST.get("cid")
+        public_key = request.POST.get("public_key")
+
+        message = get_from_IPFS(cid, public_key)
+
+        return render(request, "get_mail.html", {"message": message})
+
+    return render(request, "get_mail.html")
+
 
 def my_view(request, **kwargs):
     username = kwargs.get('username')
@@ -129,8 +143,8 @@ def send_to_IPFS(email_subject, email_content):
     response = requests.post(ipfs_url, files=data, headers=headers)
     cid = response.json()['IpfsHash']
     
-    email = Email.objects.create(cid=cid, message=binascii.hexlify(decrypted_message).decode(), public_key=receiver.IV)
-
+    email = Email.objects.create(cid=cid, message=decrypted_message.decode(), public_key=receiver.IV)
+    print(decrypted_message)
     return cid, receiver
 
 @csrf_protect
@@ -238,9 +252,6 @@ def send_mail_gmail(username, recipient, rocketmail_subject, rocketmail_message)
         smtp.login(sender, password)
         smtp.sendmail(sender, recipient, em.as_string())
 
-
-def get_emails(request):
-    return render(request, "email-list.html")
 
 def logout_view(request):
     logout(request)

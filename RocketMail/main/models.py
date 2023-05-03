@@ -22,3 +22,5 @@ class Email(models.Model):
 	cid = models.CharField(max_length=100, default="")
 	message = models.CharField(max_length=10000, default="")
 	public_key = models.CharField(max_length=100, default="")
+
+	
