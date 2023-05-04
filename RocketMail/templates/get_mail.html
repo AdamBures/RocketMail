@@ -1,0 +1,141 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <title>RocketMail 🚀 - Send Mail</title>
+        <meta content="" name="description">
+        <meta content="" name="keywords">
+        <!-- JQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <!-- Data Tables -->
+        <link href="https://cdn.datatables.net/v/dt/dt-1.13.4/datatables.min.css"
+              rel="stylesheet"/>
+        <script src="https://cdn.datatables.net/v/dt/dt-1.13.4/datatables.min.js"></script>
+        <!-- Chart.js -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <!-- Font Awesome -->
+        <link rel="stylesheet"
+              href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+        <!-- Bootstrap core CSS -->
+        <link rel="stylesheet"
+              href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <!-- Favicons -->
+        <link href="assets/img/" rel="">
+        <link href="assets/img/" rel="">
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Satisfy"
+              rel="stylesheet">
+        <!-- Vendor CSS Files -->
+        <link rel="stylesheet"
+              type="text/css"
+              href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
+        <link rel="stylesheet"
+              type="text/css"
+              href="{% static 'vendor/bootstrap-icons/bootstrap-icons.css' %}">
+        <link rel="stylesheet"
+              type="text/css"
+              href="{% static 'vendor/boxicons/css/boxicons.min.css' %}">
+        <link rel="stylesheet"
+              type="text/css"
+              href="{% static 'vendor/glightbox/css/glightbox.min.css' %}">
+        <link rel="stylesheet"
+              type="text/css"
+              href="{% static 'vendor/swiper/swiper-bundle.min.css' %}">
+        <!--Main CSS File -->
+        <link href="{% static 'css/style.css' %}"
+              rel="stylesheet"
+              media="screen"
+              type="text/css">
+    </head>
+    <body style="background-color: lightblue;">
+        <!-- ======= Header ======= -->
+        <header id="header"
+                class="fixed-top d-flex justify-content-center align-items-center header-transparent">
+            <a onclick="location.href='{% url 'index' %}'" class="logo">
+                <img src="{% static '/images/logo-no-background' %}"
+                     alt=""
+                     class="img-fluid">
+            </a>
+            <nav id="navbar" class="navbar">
+                <ul>
+                    <a href="index.html" class="navbar-logo">
+                        <img src="{% static '/images/logo-no-background.png' %}"
+                             alt=""
+                             class="img-fluid">
+                    </a>
+                    <button id="navbut"
+                            type="submit"
+                            class="button button-a button-big button-rouded" onclick="location.href='{% url 'emails' %}'">EMAIL LIST</button>
+                    <button id="navbut"
+                            type="submit"
+                            class="button button-a button-big button-rouded" onclick="location.href='{% url 'logout' %}'">LOGOUT</button>
+    
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav>
+            <!-- .navbar -->
+        </header>
+        <!-- End Header -->
+        <main id="main">
+            <!-- ======= Contact Me Section ======= -->
+            <section id="contact" class="contact" style="background-color: rgb(230, 235, 236); margin: 80px; padding: 50px; border-radius: 10px;">
+                <div class="container">
+                    <div class="section-title">
+                        <h2>SEND MAIL</h2>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-9">
+                            <form action="" method="POST" />
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-md-12 mb-3">
+                                    <div class="form-group">
+                                        <label for="cid">CID:</label>
+                                        <input type="text" id="cid" name="cid" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 mb-3">
+                                    <div class="form-group">
+                                        <label for="public_key">Public Key:</label>
+                                        <input type="text" id="public_key" name="public_key" required>
+                                    </div>
+                                </div>
+                                {% if message %}
+                                    <div class="col-md-12 mb-3">
+                                        <div class="form-group">
+                                            <label for="content">Content:</label>
+                                            <textarea type="text" id="content" name="content" readonly>{{message}}</textarea>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            </br>
+                            <div class="col-md-12 text-center">
+                            </br>
+                            <button id="submitbut"
+                                    type="submit"
+                                    class="button button-a button-big button-rouded">
+                                Get Message
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Contact Me Section -->
+</main>
+<!-- End #main -->
+<!-- Vendor JS Files -->
+<script src="{% static 'vendor/purecounter/purecounter.js' %}"></script>
+<script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'vendor/glightbox/js/glightbox.min.js' %}"></script>
+<script src="{% static 'vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+<script src="{% static 'vendor/swiper/swiper-bundle.min.js' %}"></script>
+<script src="{% static 'vendor/waypoints/noframework.waypoints.js' %}"></script>
+<!-- Template Main JS File -->
+<script src="{% static 'javascript/main.js' %}"></script>
+</body>
+</html>

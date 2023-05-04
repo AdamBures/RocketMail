@@ -63,46 +63,88 @@
                      class="img-fluid">
             </a>
             <nav id="navbar" class="navbar">
-                <a href="index.html" class="navbar-logo">
-                    <img src="{% static '/images/logo-no-background.png' %}"
-                         alt=""
-                         class="img-fluid">
-                </a>
-                <button id="navbut"
-                        type="submit"
-                        class="button button-a button-big button-rouded">EMAIL LIST</button>
-                <button id="navbut"
-                        type="submit"
-                        class="button button-a button-big button-rouded"
-                        onclick="location.href='{% url 'logout' %}'">
-                    LOGOUT
-                </button>
+                <ul>
+                    <a onclick="location.href='{% url 'index' %}'" class="navbar-logo">
+                        <img src="{% static '/images/logo-no-background.png' %}"
+                             alt=""
+                             class="img-fluid">
+                    </a>
+                    <button id="navbut"
+                            type="submit"
+                            class="button button-a button-big button-rouded" onclick="location.href='{% url 'emails' %}'">EMAIL LIST</button>
+                    <button id="navbut"
+                            type="submit"
+                            class="button button-a button-big button-rouded"
+                            onclick="location.href='{% url 'logout' %}'">
+                        LOGOUT
+                    </button>
+                </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav>
             <!-- .navbar -->
         </header>
         <!-- End Header -->
         <main id="main">
-            <section style="background-color: lightblue;" id="loginbody">
-                <div class="main">
-                    <div class="signup">
-                        <form action="" method="post">
-                            {% csrf_token %}
-                            <label for="chk" aria-hidden="true">SEND MAIL</label>
-                            <input type="text"
-                                   id="recipient"
-                                   name="recipient"
-                                   placeholder="Recipiant Address"
-                                   required>
-                            <input type="text"
-                                   id="content"
-                                   class="textarea"
-                                   name="content"
-                                   style="height:200px;font-size:14pt; max-lenght: 50px;"
-                                   placeholder="Message"
-                                   required>
-                            <input type="file" id="ipfs" name="ipfs" accept=".rtf, .pdf, .txt" required>
-                            <div class="col-md-12 text-center">
+            <!-- ======= sendmail Me Section ======= -->
+            <section id="sendmail" class="sendmail" style="background-color: rgb(230, 235, 236); margin: 80px; padding: 50px; border-radius: 10px;">
+                <div class="container">
+                    <div class="section-title">
+                        <h2>
+                            SEND MAIL
+                        </h2>
+                        <p>
+                            SEND MAIL
+                        </p>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <form action="" method="POST" />
+                            <div class="row">
+                                <div class="col-md-12 mb-3">
+                                    <div class="form-group">
+                                        <input type="text"
+                                               name="Full&nbsp;Name"
+                                               class="form-control"
+                                               id="name"
+                                               placeholder="Full Name"
+                                               required>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 mb-3">
+                                    <div class="form-group">
+                                        <input type="email"
+                                               class="form-control"
+                                               name="Email"
+                                               id="email"
+                                               placeholder="Your Email"
+                                               required>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 mb-3">
+                                    <div class="form-group">
+                                        <input type="tel"
+                                               class="form-control"
+                                               name="Phone&nbsp;Nunber"
+                                               id="phone"
+                                               placeholder="Phone No"
+                                               required>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <textarea class="form-control"
+                                                  name="Message"
+                                                  rows="5"
+                                                  placeholder="Message"
+                                                  required></textarea>
+                                    </div>
+                                </div>
+                            
+                                <p>How do you want to send your email ?</p>
+                                <p><input type="radio" id="web2" name="web" value="Web2" checked>
+                                <label for="web2">Web2</label>
+                                <input type="radio" id="web3" name="web" value="Web3">
+                                <label for="web3">Web3</label></p><br>
                             
                             <button id="submitbut"
                                     type="submit"
@@ -111,11 +153,14 @@
                                 Message
                             </button>
                         </div>
-                        
-                    </form>
-                </div>
+                    </div>
+                </form>
             </div>
-        </section>
+        </div>
+    </div>
+</section>
+<!-- End sendmail Me Section -->
+
     </main>
     <!-- End #main -->
     <!-- Vendor JS Files -->

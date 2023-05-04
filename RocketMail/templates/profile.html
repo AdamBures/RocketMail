@@ -59,17 +59,19 @@
                      class="img-fluid">
             </a>
             <nav id="navbar" class="navbar">
-                <a href="index.html" class="navbar-logo">
-                    <img src="{% static '/images/logo-no-background.png' %}"
-                         alt=""
-                         class="img-fluid">
-                </a>
-                <button id="navbut"
-                        type="submit"
-                        class="button button-a button-big button-rouded" onclick="location.href='{% url 'send' %}'">SEND MAIL</button>
-                <button id="navbut"
-                        type="submit"
-                        class="button button-a button-big button-rouded" onclick="location.href='{% url 'logout' %}'">LOGOUT</button>
+                <ul>
+                    <a onclick="location.href='{% url 'index' %}'" class="navbar-logo">
+                        <img src="{% static '/images/logo-no-background.png' %}"
+                             alt=""
+                             class="img-fluid">
+                    </a>
+                    <button id="navbut"
+                            type="submit"
+                            class="button button-a button-big button-rouded" onclick="location.href='{% url 'send' %}'">SEND MAIL</button>
+                    <button id="navbut"
+                            type="submit"
+                            class="button button-a button-big button-rouded" onclick="location.href='{% url 'logout' %}'">LOGOUT</button>
+                </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav>
             <!-- .navbar -->
@@ -82,9 +84,41 @@
                     <div class="section-title">
                         <h2>MAIL List</h2>
                     </div>
-                    <h3>User: {{ username }}@rocketmail.com</h3>
+                    <h3>User: {{ username }}@rocmail.com</h3>
                     <a href="{% url 'logout' %}">Log out</a>
                     <button id="aboutbut" onclick="location.href='{% url 'send' %}'">Click me</button>
+
+                    {% if gmail_username == "This user has not set this part." %}
+                        <p id="error">If you want to send emails with your gmail, login here</p>
+                    {% endif %}
+
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                        <label>First Name: </label>
+                        <input type="fist_name" name="first_name" value="{{ first_name }}">
+                        
+                        <label>Second Name: </label>
+                        <input type="second_name" name="last_name" value="{{ last_name }}">
+
+                        <label>Username: </label>
+                        <input type="username" name="username" value="{{ username }}">
+
+                        <label>Password:</label>
+                        <input type="password" name="password" value="{{ password }}">
+
+                        <label>Gmail username: </label>
+                        <input type="gmail_username" name="gmail_username" value="{{ gmail_username }}">
+
+                        <label>Gmail password: </label>
+                        <input type="password" name="gmail_password" value="{{ gmail_password }}">
+
+                        {% if messages != '' %}
+                            <p>{{ messages }}</p>
+                        {% endif %}
+
+                        <button>Change</button>
+                    </form>
+
                 </form>
             </div>
         </div>
