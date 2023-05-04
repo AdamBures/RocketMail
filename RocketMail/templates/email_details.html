@@ -83,25 +83,14 @@
             <section id="contact" class="contact" style="background-color: rgb(230, 235, 236); margin: 80px; padding: 50px; border-radius: 10px;">
                 <div class="container">
                     <div class="section-title">
-                        <h2>RECEIVE MAIL</h2>
+                        <h2>SEND FROM: <span>tolujohn@gmail</span></h2>
                     </div>
                     <div class="row">
                         <div class="col-lg-9">
                             <form action="" method="POST" />
                             {% csrf_token %}
                             <div class="row">
-                                <div class="col-md-12 mb-3">
-                                    <div class="form-group">
-                                        <label for="cid">CID:</label>
-                                        <input type="text" id="cid" name="cid" required>
-                                    </div>
-                                </div>
-                                <div class="col-md-12 mb-3">
-                                    <div class="form-group">
-                                        <label for="public_key">Public Key:</label>
-                                        <input type="text" id="public_key" name="public_key" required>
-                                    </div>
-                                </div>
+                                <h1>Content shows Here</h1>
                                 {% if message %}
                                     <div class="col-md-12 mb-3">
                                         <div class="form-group">
@@ -116,7 +105,7 @@
                             <button id="submitbut"
                                     type="submit"
                                     class="button button-a button-big button-rouded">
-                                Get Message
+                                REPLY
                             </button>
                         </div>
                     </div>

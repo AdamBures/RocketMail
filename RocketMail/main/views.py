@@ -25,7 +25,7 @@ load_dotenv()
 
 # Create your views here.
 def index(request):
-    return render(request, "email-list.html")
+    return render(request, "index.html")
 
 
 def get_from_IPFS(cid, public_key):
