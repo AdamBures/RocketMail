@@ -59,17 +59,19 @@
                      class="img-fluid">
             </a>
             <nav id="navbar" class="navbar">
-                <a onclick="location.href='{% url 'index' %}'" class="navbar-logo">
-                    <img src="{% static '/images/logo-no-background.png' %}"
-                         alt=""
-                         class="img-fluid">
-                </a>
-                <button id="navbut"
-                        type="submit"
-                        class="button button-a button-big button-rouded" onclick="location.href='{% url 'send' %}'">SEND MAIL</button>
-                <button id="navbut"
-                        type="submit"
-                        class="button button-a button-big button-rouded" onclick="location.href='{% url 'logout' %}'">LOGOUT</button>
+                <ul>
+                    <a onclick="location.href='{% url 'index' %}'" class="navbar-logo">
+                        <img src="{% static '/images/logo-no-background.png' %}"
+                             alt=""
+                             class="img-fluid">
+                    </a>
+                    <button id="navbut"
+                            type="submit"
+                            class="button button-a button-big button-rouded" onclick="location.href='{% url 'send' %}'">SEND MAIL</button>
+                    <button id="navbut"
+                            type="submit"
+                            class="button button-a button-big button-rouded" onclick="location.href='{% url 'logout' %}'">LOGOUT</button>
+                </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav>
             <!-- .navbar -->
