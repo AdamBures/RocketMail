@@ -25,7 +25,7 @@ load_dotenv()
 
 # Create your views here.
 def index(request):
-    return render(request, "index.html")
+    return render(request, "profile.html")
 
 
 def get_from_IPFS(cid, public_key):
