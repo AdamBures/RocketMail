@@ -86,20 +86,18 @@
         <main id="main" style="margin-top: 60px;">
             <div class="container emp-profile">
                 <form method="post">
+                    {% csrf_token %}
                     <div class="row">
                         <div class="col-md-4">
                             <div class="profile-img">
-                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog"
-                                     alt=""/>
-                                <div class="file btn btn-lg btn-primary">
-                                    Change Photo
-                                    <input type="file" name="file"/>
-                                </div>
+                                <img src="{{ image }}"
+                                     alt="User icon"/>
+
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="profile-head">
-                                <h5>Kshiti Ghelani</h5>
+                                <h5>{{ first_name }} {{ last_name }}</h5>
                                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                                     <li class="nav-item">
                                         <a class="nav-link active"
@@ -110,125 +108,83 @@
                                            aria-controls="home"
                                            aria-selected="true">About</a>
                                     </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link"
-                                           id="profile-tab"
-                                           data-toggle="tab"
-                                           href="#profile"
-                                           role="tab"
-                                           aria-controls="profile"
-                                           aria-selected="false">Timeline</a>
-                                    </li>
                                 </ul>
                             </div>
                         </div>
-                        <div class="col-md-2">
-                            <input type="submit"
-                                   class="profile-edit-btn"
-                                   name="btnAddMore"
-                                   value="Edit Profile"/>
-                        </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-8">
-                            <div class="tab-content profile-tab" id="myTabContent">
-                                <div class="tab-pane fade show active"
-                                     id="home"
-                                     role="tabpanel"
-                                     aria-labelledby="home-tab">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <label>User Id</label>
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="tab-content profile-tab" id="myTabContent">
+                                    <div class="tab-pane fade show active"
+                                         id="home"
+                                         role="tabpanel"
+                                         aria-labelledby="home-tab">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>User Id</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>{{ username }}</p>
+                                            </div>
                                         </div>
-                                        <div class="col-md-6">
-                                            <p>Kshiti123</p>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Name</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>{{ first_name }} {{ last_name }}</p>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <label>Name</label>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Password</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <input type="password" name="password" value="{{ password }}">
+                                            </div>
                                         </div>
-                                        <div class="col-md-6">
-                                            <p>Kshiti Ghelani</p>
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Gmail</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <input type="gmail_username"
+                                               name="gmail_username"
+                                               value="{{ gmail_username }}">
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <label>Email</label>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>
+                                                    Gmail password:
+                                                </label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <input type="gmail_password"
+                                               name="gmail_password"
+                                               value="{{ gmail_password }}">
+                                            </div>
                                         </div>
-                                        <div class="col-md-6">
-                                            <p>kshitighelani@gmail.com</p>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <label>Phone</label>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <p>123 456 7890</p>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <label>Profession</label>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <p>Web Developer and Designer</p>
-                                        </div>
+                                        {% if messages != '' %}
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <p>
+                                                        {{ messages }}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        {% endif %}    
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <button id="navbut"
-                            type="submit"
-                            class="button button-a button-big button-rouded"
-                            onclick="location.href='{% url 'send' %}'">
-                        Change Password
-                    </button>
-                    <!-- ======= Contact Me Section ======= -->
-                    <section id="contact" class="contact">
-                        <div class="container">
-                            <div class="section-title">
-                                <h2>MAIL List</h2>
-                            </div>
-                            <h3>User: {{ username }}@rocmail.com</h3>
-                            {% if gmail_username == "This user has not set this part." %}
-                                <p id="error">If you want to send emails with your gmail, login here</p>
-                            {% endif %}
-                            <form action="" method="POST">
-                                {% csrf_token %}
-                                <label>First Name:</label>
-                                <input type="fist_name" name="first_name" value="{{ first_name }}">
-                                <label>Second Name:</label>
-                                <input type="second_name" name="last_name" value="{{ last_name }}">
-                                <label>Username:</label>
-                                <input type="username" name="username" value="{{ username }}">
-                                <label>
-                                    Password:
-                                </label>
-                                <input type="password" name="password" value="{{ password }}">
-                                <label>
-                                    Gmail username:
-                                </label>
-                                <input type="gmail_username"
-                                       name="gmail_username"
-                                       value="{{ gmail_username }}">
-                                <label>
-                                    Gmail password:
-                                </label>
-                                <input type="password" name="gmail_password" value="{{ gmail_password }}">
-                                {% if messages != '' %}
-                                    <p>
-                                        {{ messages }}
-                                    </p>
-                                {% endif %}
-                                <button>
-                                    Change
-                                </button>
-                            </form>
-                        </div>
-                    </section>
+                        <button id="navbut"
+                                type="submit"
+                                class="button button-a button-big button-rouded">
+                            Change
+                        </button>
+                    </form>
                 </form>
             </div>
             <!-- End Contact Me Section -->

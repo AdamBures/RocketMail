@@ -25,7 +25,7 @@ load_dotenv()
 
 # Create your views here.
 def index(request):
-    return render(request, "profile.html")
+    return render(request, "index.html")
 
 
 def get_from_IPFS(cid, public_key):
@@ -60,20 +60,13 @@ def my_view(request, **kwargs):
         last_name = user.last_name
         gmail_username = user.gmail_username
         gmail_password = user.gmail_password
+        pic = user.image.url
 
         message = ""
         if request.method == "POST":
-            username = request.POST.get('username')
             password = request.POST.get('password')
-            first_name = request.POST.get('first_name')
-            last_name = request.POST.get('last_name')
             gmail_username = request.POST.get('gmail_username')
             gmail_password = request.POST.get('gmail_password')
-
-            user.username = username
-            user.password = password
-            user.first_name = first_name
-            user.last_name = last_name
 
             context = ssl.create_default_context()
             smtp = smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context)
@@ -86,7 +79,7 @@ def my_view(request, **kwargs):
 
             user.save()
 
-        return render(request, 'profile.html', {'username': username, 'password': password, 'first_name': first_name, 'last_name': last_name, 'gmail_username': gmail_username, 'gmail_password': gmail_password, 'messages': message})
+        return render(request, 'profile.html', {'username': user.username, 'password': password, "first_name": first_name, "last_name": last_name, 'gmail_username': gmail_username, 'gmail_password': gmail_password, 'messages': message, 'image': pic})
 
     else:
         return redirect('login')
@@ -144,7 +137,6 @@ def send_to_IPFS(email_subject, email_content):
     cid = response.json()['IpfsHash']
     
     email = Email.objects.create(cid=cid, message=decrypted_message.decode(), public_key=receiver.IV)
-    print(decrypted_message)
     return cid, receiver
 
 @csrf_protect
@@ -162,14 +154,13 @@ def login_view(request):
                 return redirect(f'profile/{username}')
             else:
                 request.session['LOGGED'] = False
-                messages.error(request, 'Invalid password.')
-                return redirect('login')
+                print("YES")
+                return render(request, 'login.html', {"message": 'Invalid password.'})
         
         except User.DoesNotExist:
             request.session['LOGGED'] = False
-            messages.error(request, 'Invalid username.')
 
-            return redirect('login')
+            return render(request, 'login.html', {"message": 'Invalid username.'})
     else:
         username = request.session.get('username')
         if username == None:
@@ -255,4 +246,4 @@ def send_mail_gmail(username, recipient, rocketmail_subject, rocketmail_message)
 
 def logout_view(request):
     logout(request)
-    return redirect('login')
+    return render(request, "index.html")

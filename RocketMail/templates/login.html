@@ -80,17 +80,20 @@
                                           <input type="password" name="password" placeholder="Password" required="">
                                           <input id="type" name="login">
                                           <button type="submit" name="loginuser" class="boot">Login</button>
-                                    </br>
-                              </br>
-                              <p>
-                                    Not a User?<a href="register"><b>Signup</b></a>
-                              </p>
-                        </form>
-                  </div>
-            </div>
-      </section>
+                                          {% if message %}
+                                                <p>{{ message }}</p>
+                                          {% endif %}
+                                          <br>
+                                          <br>
+                                          <p>
+                                                Not a User?<a href="register"><b>Signup</b></a>
+                                          </p>
+                                    </form>
+                              </div>
+                        </div>
+                  </section>
       <!--End login form-->
-</main>
+            </main>
 <!-- Vendor JS Files -->
 <script src="{% static 'vendor/purecounter/purecounter.js' %}"></script>
 <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>

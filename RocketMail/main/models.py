@@ -17,6 +17,7 @@ class User(models.Model):
 	gmail_username = models.CharField(max_length=100, default=get_default)
 	gmail_password = models.CharField(max_length=100, default=get_default)
 
+	image = models.ImageField(upload_to='static/images/', default='static/images/default.jpg')
 
 class Email(models.Model):
 	cid = models.CharField(max_length=100, default="")

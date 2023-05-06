@@ -78,18 +78,27 @@
                     <li>
                         <a class="nav-link scrollto" href="#contact">Contact</a>
                     </li>
-                    <button id="navbut"
-                            type="submit"
-                            class="button button-a button-big button-rouded"
-                            onclick="location.href='{% url 'login' %}'">
-                        LOGIN
-                    </button>
-                    <button id="navbut"
-                            type="submit"
-                            class="button button-a button-big button-rouded"
-                            onclick="location.href='{% url 'register' %}'">
-                        SIGN UP
-                    </button>
+                    {% if request.session.LOGGED %}
+                        <button id="navbut"
+                                type="submit"
+                                class="button button-a button-big button-rouded"
+                                onclick="location.href='{% url 'profile' request.session.username %}'">
+                                Profile
+                        </button>
+                    {% else %}
+                        <button id="navbut"
+                                type="submit"
+                                class="button button-a button-big button-rouded"
+                                onclick="location.href='{% url 'login' %}'">
+                            LOGIN
+                        </button>
+                        <button id="navbut"
+                                type="submit"
+                                class="button button-a button-big button-rouded"
+                                onclick="location.href='{% url 'register' %}'">
+                            SIGN UP
+                        </button>
+                    {% endif %}
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav>
