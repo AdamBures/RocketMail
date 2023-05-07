@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-p_fm%9qji649(ajf0*_%wl9!537^$jas6-w+4y$s35xhxd3ff^'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["provider.palmito.duckdns.org"]
 
 
 # Application definition
